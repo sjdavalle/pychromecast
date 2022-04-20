@@ -128,6 +128,7 @@ def get_device_status(  # pylint: disable=too-many-locals
         friendly_name = status.get("name", "Unknown Chromecast")
         manufacturer = "Unknown manufacturer"
         model_name = "Unknown model name"
+        product_name = "Unknown product name"
         multizone_supported = False
         udn = None
 
@@ -141,6 +142,7 @@ def get_device_status(  # pylint: disable=too-many-locals
             model_name = device_info.get("model_name", model_name)
             manufacturer = device_info.get("manufacturer", manufacturer)
             udn = device_info.get("ssdp_udn", None)
+            product_name = device_info.get("product_name", product_name)
 
         if not display_supported:
             cast_type = CAST_TYPE_AUDIO
@@ -158,6 +160,7 @@ def get_device_status(  # pylint: disable=too-many-locals
             uuid,
             cast_type,
             multizone_supported,
+            product_name
         )
 
     except (urllib.error.HTTPError, urllib.error.URLError, OSError, ValueError):
@@ -233,5 +236,6 @@ DeviceStatus = namedtuple(
         "uuid",
         "cast_type",
         "multizone_supported",
+        "product_name"
     ],
 )

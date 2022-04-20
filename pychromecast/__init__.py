@@ -61,6 +61,7 @@ def get_chromecast_from_host(host, tries=None, retry_wait=None, timeout=None):
         uuid=uuid,
         cast_type=cast_type,
         multizone_supported=multizone_supported,
+        product_name=None
     )
     return Chromecast(
         host=ip_address,
@@ -99,6 +100,7 @@ def get_chromecast_from_cast_info(
         uuid=cast_info.uuid,
         cast_type=cast_type,
         multizone_supported=multizone_supported,
+        product_name=None
     )
     return Chromecast(
         host=None,
@@ -339,6 +341,7 @@ class Chromecast:
                     multizone_supported=(
                         device.multizone_supported or dev_status.multizone_supported
                     ),
+                    product_name=(device.product_name or dev_status.product_name)
                 )
             else:
                 self.device = device
