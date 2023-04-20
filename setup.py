@@ -5,7 +5,7 @@ long_description = open("README.rst").read()
 
 setup(
     name="PyChromecast",
-    version="9.4.1",
+    version="9.4.116",  # 116 is the ascii code of 't' which stands for tvision
     license="MIT",
     url="https://github.com/balloob/pychromecast",
     author="Paulus Schoutsen",
